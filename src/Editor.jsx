@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './assets/css/Editor.module.css';
+import './assets/css/Editor'
 import { setBackgroundImage, canvasInit, drag, set, undo, redo, applyCropping, clear, saveImage, uploadImage, getCurrentColor } from './assets/js/methods';
 class Editor extends Component {
   constructor(props) {
