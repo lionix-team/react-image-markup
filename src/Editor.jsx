@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setBackgroundImage, canvasInit, drag, set, undo, redo, applyCropping, clear, saveImage, uploadImage, getCurrentColor } from './assets/js/methods';
+import { setBackgroundImage, canvasInit, drag, set, undo, redo, applyCropping, clear, saveImage, uploadImage, getCurrentColor,changeColor } from './assets/js/methods';
 class Editor extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +20,8 @@ class Editor extends Component {
     this.setBackgroundImage = setBackgroundImage.bind(this);
     this.uploadImage = uploadImage.bind(this);
     this.saveImageAsFile = this.saveImageAsFile.bind(this)
-    this.getCurrentColor = getCurrentColor.bind(this)
+    this.getCurrentColor = getCurrentColor.bind(this);
+    this.changeColor = changeColor.bind(this)
   }
   componentDidMount() {
     let generetedId = this.generateId(4)
