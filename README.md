@@ -193,6 +193,12 @@ componentDidMount{
 }
 ```
 
+## Function changeColor(colorHex)
+##### `changeColor(colorHex)` to set color of tools
+```javascript
+ this.editor.current.changeColor('#371492')
+```
+
 ## Function uploadImage(e)
 ##### `uploadImage(e)` to set background of canvas
 ```javascript
