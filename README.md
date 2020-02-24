@@ -1,5 +1,8 @@
 # Markup Image with React.js (customizable)
 
+[![](https://img.shields.io/npm/dt/react-image-markup.svg)](https://www.npmjs.com/package/react-image-markup)
+[![](https://img.shields.io/npm/v/react-image-markup.svg)](https://www.npmjs.com/package/react-image-markup)
+
 `react-image-markup` will provide you to edit uploaded image easily and save it. 
 
 
@@ -16,7 +19,7 @@ or
 First import the Editor component inside 
 your React component.
 ```react
- import Editor from 'react-image-markup'
+ import { Editor } from 'react-image-markup'
 ```
 
 Then you'll be able to use Editor component.
