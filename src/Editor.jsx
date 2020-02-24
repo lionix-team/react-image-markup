@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Editor.module.css';
-import { setBackgroundImage, canvasInit, drag, set, undo, redo, applyCropping, clear, saveImage, uploadImage, getCurrentColor } from '../assets/js/methods';
+import { setBackgroundImage, canvasInit, drag, set, undo, redo, applyCropping, clear, saveImage, uploadImage, getCurrentColor } from './assets/js/methods';
 class Editor extends Component {
   constructor(props) {
     super(props);
