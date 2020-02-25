@@ -48,11 +48,12 @@ export default (function () {
             apply= false;
             let croppedImage = { json: canvas.toJSON(), croppedImage: overlayCropped};
             new CanvasHistory(this.canvas,croppedImage)
-            return CropImage
+            return CropImage;
         }
  
         this.bindEvents();  
         this.canvas.selectable = false;    
+     
         this.canvas.renderAll();
         let inst = this;
         new fabric.Image.fromURL(src, function(oImg) {

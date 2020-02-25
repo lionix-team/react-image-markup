@@ -17,7 +17,7 @@ let canvas;
 export const getCurrentColor = () => {
   return state.color;
 }
-export const canvasInit = (c) => { 
+export const canvasInit = (c) => {
   canvas = new fabric.Canvas(c);
   canvas.backgroundColor = '#fff';
   new CanvasHistory(canvas);
@@ -42,7 +42,6 @@ export const set = (type, params) => {
   drag();
   state.currentTool = type;
   switch (type) {
-
     case "text":
       customParams = {
         fill: (params && params.fill) ? params.fill : state.color,
@@ -82,11 +81,9 @@ export const set = (type, params) => {
       };
       new Shape(canvas, true, type, customParams);
       break;
-
     case 'selectMode':
       drag();
       break;
-
     case 'arrow':
       customParams = {
         fill: (params && params.fill) ? params.fill : 'transparent',
@@ -111,9 +108,7 @@ export const set = (type, params) => {
         affectStroke: true,
         color: customParams.stroke,
       });
-
       canvas.on("object:added", function () {
-
         if (canvas.isDrawingMode) {
           new CanvasHistory(canvas)
         }
@@ -135,12 +130,14 @@ export const set = (type, params) => {
         cornerStyle: (params && params.cornerStyle) ? params.cornerStyle : "circle",
       };
       state.currentTool = 'selectMode';
-      new CropImage(canvas, true, false, false, customParams);
+      new CropImage(canvas,true,false,false,customParams);
+  
       break;
     default:
   }
 }
 export const applyCropping = () => {
+  
   new CropImage(canvas, true, true);
   drag()
 }
