@@ -25,6 +25,7 @@ export default (function () {
         drag = draggable;
         disabled = false;
         properties = params;
+        canvas.backgroundColor = "#fff";
         src = canvas.toDataURL('image/jpeg');  
         fabric.util.loadImage(src, function (img) {
             object = new fabric.Image(img);    
