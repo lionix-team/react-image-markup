@@ -1,0 +1,19 @@
+name: Cleanup old packages
+
+on:
+  schedule:
+    - cron: '0 12 * * 1' # Run every Monday at 12PM
+
+jobs:
+  publish:
+    name: Cleanup old package versions
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Cleanup packages
+        uses: smartsquaregmbh/delete-old-packages@v0.3.2
+        with:
+          organization: shape-construction
+          version-pattern: "^\\d+\\.\\d+\\.\\d+-(.*)\\.0$" # pre release packages only
+          keep: 10 # Keep 10 recent versions
+          names: |
+            react-image-markup

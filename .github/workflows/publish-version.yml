@@ -1,0 +1,66 @@
+name: Publish version
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-type:
+        description: One of [major, minor, patch]
+        required: true
+
+jobs:
+  publish:
+    name: Publish version
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.3.5
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: Setup node
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '16.5.0'
+      - name: Approver
+        run: echo "Triggered by ${{ github.actor }} and tagging ${{ github.ref }}"
+      - name: Config git committer
+        run: |
+          git config --local user.email "bot-the-builder@shape.construction"
+          git config --local user.name "Bot the builder"
+      - name: Bump version
+        run: npm version ${{ github.event.inputs.release-type }} -m "[ci skip] Upgrade to %s" --preid="$(git rev-parse --short HEAD)"
+      - name: Push version bump
+        if: github.event.inputs.release-type != 'prerelease'
+        id: push-version
+        run: |
+          git push "https://bot-the-builder-shape:${{ secrets.BOT_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:master --tags
+          echo "::set-output name=label::$(cat package.json | jq -r '.version')";
+      - name: Create Release
+        if: github.event.inputs.release-type != 'prerelease'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.push-version.outputs.label }}
+          release_name: v${{ steps.push-version.outputs.label }}
+          body: |
+            Release v${{ steps.push-version.outputs.label }}
+          draft: false
+          prerelease: false
+      - name: Publish to registry
+        env:
+          GH_DEPS_PAT: ${{ secrets.GH_DEPS_PAT }}
+        run: |
+          npm ci
+          npm publish
+      - name: "Send failure message to #developer-chat"
+        if: failure() && github.ref == 'refs/heads/master'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: developer-chat
+          status: FAILED
+          color: danger
+

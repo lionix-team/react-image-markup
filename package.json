@@ -13,25 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lionix-team/react-image-markup.git"
+    "url": "git://github.com/shape-construction/react-image-markup.git"
   },
-  "keywords": [
-    "image",
-    "editor",
-    "image editor",
-    "image-editor",
-    "markup",
-    "image markup",
-    "image-markup",
-    "editor markup",
-    "reactjs",
-    "react",
-    "lionix",
-    "vue",
-    "js",
-    "cropper",
-    "crop"
-  ],
+  "keywords": [],
   "authors": [
     {
       "name": "Lionix Team",
