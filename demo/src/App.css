@@ -1,0 +1,38 @@
+
+.app{
+  margin-top:60px;
+  flex-direction: column;
+  display: flex;
+}
+.container{
+  display: flex;
+}
+.upload-image{
+  max-height: 32px;
+  max-width: 60px;
+}
+.header{
+  padding: 10px;
+  display: flex;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  justify-content: flex-end;
+  background-color: #504d58;
+  margin-right: -2px;
+}
+#root{
+  display: flex;
+  justify-content: center;
+}
+.tools{
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #504d58;
+  margin-bottom: -2px;
+}
+canvas{
+  border: 1px solid #504d58;
+}

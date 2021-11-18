@@ -1,0 +1,14 @@
+.tool{
+    padding:10px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+i{
+    color:white;
+}
+i:hover{
+    color:#000
+}
+    
