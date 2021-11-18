@@ -2,8 +2,10 @@
   "name": "react-image-markup",
   "version": "1.1.0",
   "description": "Markup Image with ReactJS (customizable)",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
+  "source": "src/index.js",
   "scripts": {
+    "build": "parcel",
     "prepublishOnly": "babel ./src --out-dir ./dist -s inline"
   },
   "repository": {
@@ -43,11 +45,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
+    "parcel": "^2.0.1",
     "prop-types": "^15.7.2"
   },
   "dependencies": {
